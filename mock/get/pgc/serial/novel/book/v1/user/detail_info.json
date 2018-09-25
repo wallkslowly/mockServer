@@ -1,0 +1,22 @@
+{
+    "log_id":"2018041613161101000302304011265",
+    "message": "success",
+    "code": 0,
+    "data":
+    {
+        "book_name": "总裁老公缠上门",
+        "thumb_uri": "jkasjkaj",
+        "creation_status": "连载中",
+        "category": "历史军事/历史小说",
+        "abstract": "主人公神勇",
+        "can_modify" : 1,
+        "create_time": 128982918222,
+        "update_time": 122819279222,
+        "vip_status" : 0,
+        "create_vip_time": 289182922218,
+        "price": 99,
+        "authorize_type": 1,
+        "price_status": 1
+    },
+    "now": 1523855771 
+}

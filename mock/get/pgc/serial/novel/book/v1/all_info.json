@@ -1,0 +1,17 @@
+{
+    "log_id": "2018091720323401001302009912480",
+    "message": "success",
+    "now": 1537187554,
+    "data": {
+        "data_list": [{
+            "author": "",
+            "book_id": "1605218849684504",
+            "book_name": "树莓派使用指南",
+            "category": "科技",
+            "creation_status": "连载中",
+            "display_status": "审核中",
+            "total_income": 0
+        }],
+        "total_count": 18
+    }
+}
