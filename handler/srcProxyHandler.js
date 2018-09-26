@@ -1,18 +1,13 @@
 const ServerResponse = require('http').ServerResponse;
 const httpProxy  = require('http-proxy');
-const mockConfig = require('./mock');
-const proxy = httpProxy.createProxyServer({
-    target: mockConfig.srcTarget,
-    timeout: 2000
-});
-proxy.on('end', (req, res, proxyRes) => {
-    res.emit('proxyEnd', req, res, proxyRes);
-})
-module.exports = async (ctx, next) => {
-    //if(ctx.url.indexOf('create_book') !== -1 || ctx.url.indexOf('modify_info') !== -1) {
-        // console.log('src begin--------------', ctx.url)
-    //}
-    
+module.exports = async (ctx, mockConfig) => {
+    const proxy = httpProxy.createProxyServer({
+        target: mockConfig.srcTarget,
+        timeout: 2000
+    });
+    proxy.on('end', (req, res, proxyRes) => {
+        res.emit('proxyEnd', req, res, proxyRes);
+    });
     const res = new ServerResponse(ctx.req);
     const bodyBuffers = [];
     res.write = (chunk) => {
@@ -26,9 +21,6 @@ module.exports = async (ctx, next) => {
             resolve(proxyRes);
         })
     })
-    //if(ctx.url.indexOf('create_book') !== -1 || ctx.url.indexOf('modify_info') !== -1) {
-        // console.log('src end--------------', res.statusCode)
-    //}
     if (res.statusCode !== 404) {
         ctx.status = res.statusCode;
         for (const name in res._headers) {

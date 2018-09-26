@@ -1,4 +1,4 @@
 /node_modules/
-/mock/
+/mock*
 /testmock/
 /mock.json

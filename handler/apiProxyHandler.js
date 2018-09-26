@@ -1,13 +1,12 @@
 const ServerResponse = require('http').ServerResponse;
 const httpProxy  = require('http-proxy');
-const mockConfig = require('./mock');
-const proxy = httpProxy.createProxyServer({
-    target: mockConfig.apiTarget
-});
-proxy.on('end', (req, res, proxyRes) => {
-    res.emit('proxyEnd', req, res, proxyRes);
-})
-module.exports = async (ctx, next) => {
+module.exports = async (ctx, mockConfig) => {
+    const proxy = httpProxy.createProxyServer({
+        target: mockConfig.apiTarget
+    });
+    proxy.on('end', (req, res, proxyRes) => {
+        res.emit('proxyEnd', req, res, proxyRes);
+    })
     const res = new ServerResponse(ctx.req);
     const bodyBuffers = [];
     res.write = (chunk) => {

@@ -1,12 +1,12 @@
 {
-  "name": "mockserver",
-  "version": "1.0.0",
-  "description": "",
+  "name": "@byted/mockserver",
+  "version": "1.0.1",
+  "description": "mockserver for develop",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "lishinan",
   "license": "ISC",
   "dependencies": {
     "koa": "^2.5.0",
