@@ -1,15 +1,23 @@
 {
   "name": "@byted/mockserver",
-  "version": "1.0.1",
+  "version": "1.2.3",
   "description": "mockserver for develop",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [
+    "mock server",
+    "json",
+    "proxy"
+  ],
   "author": "lishinan",
   "license": "ISC",
   "dependencies": {
-    "koa": "^2.5.0",
-    "http-proxy": "^1.16.2"
+    "http-proxy": "^1.16.2",
+    "koa": "^2.5.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.6.1"
   }
 }

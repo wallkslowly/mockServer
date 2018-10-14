@@ -1,15 +1,18 @@
-const path = require('path');
-const srcProxyHandler = require(path.join(__dirname, '/srcProxyHandler.js'));
-const apiProxyHandler = require(path.join(__dirname, '/apiProxyHandler.js'));
+const srcProxyHandler = require('./srcProxyHandler.js');
+const apiProxyHandler = require('./apiProxyHandler.js');
 
 module.exports = (mockConfig) => {
-	const { mockPaths } = mockConfig;
+	const { mockPaths, apiTarget, srcTarget } = mockConfig;
 	return async (ctx, next) => {
-		if (mockPaths.includes(ctx.path)) {
-			await next()
+		if (mockPaths && mockPaths.indexOf(ctx.path) !== -1) {
+			await next();
 		} else {
-			await apiProxyHandler(ctx, mockConfig);
-			if(!ctx.ready) {
+			// 判断是否需要开启api代理
+			if (apiTarget) {
+				await apiProxyHandler(ctx, mockConfig);
+			}
+			// 判断是否需要src代理
+			if(srcTarget && !ctx.ready) {
 				await srcProxyHandler(ctx, mockConfig);
 			}
 			if(!ctx.ready) {

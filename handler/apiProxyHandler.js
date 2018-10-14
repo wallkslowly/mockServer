@@ -15,11 +15,11 @@ module.exports = async (ctx, mockConfig) => {
     }
     await new Promise((resolve) => {
         proxy.web(ctx.req, res);
-        res.once('proxyEnd', (req, resAssist, proxyRes) => {
+        res.once('proxyEnd', (req, resAssist) => {
             resAssist.body = Buffer.concat(bodyBuffers);
-            resolve(proxyRes);
-        })
-    })
+            resolve();
+        });
+    });
     if (res.statusCode !== 404) {
         ctx.status = res.statusCode;
         for (const name in res._headers) {
